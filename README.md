@@ -115,7 +115,7 @@ We welcome feedback, ideas, and contributors to make CvCraft better for everyone
 - **Parv Kanungo** – User Analytics Lead  
   LinkedIn: https://www.linkedin.com/in/parvkanungo/  
   GitHub: https://github.com/ParvKanungo
-  
+
 - **Saraansh Gupta** – Front-End Engineer  
   LinkedIn: https://www.linkedin.com/in/saraanshgupta/  
   GitHub: https://github.com/Saraansh08
@@ -128,4 +128,4 @@ We welcome feedback, ideas, and contributors to make CvCraft better for everyone
 
 ---
 
-If you’d like, I can add screenshots/GIFs, deployment instructions (Netlify/Vercel), and a cleaner contact route (e.g., `/contact`).
+
