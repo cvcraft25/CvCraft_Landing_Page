@@ -122,7 +122,7 @@ We welcome feedback, ideas, and contributors to make CvCraft better for everyone
 
 ## 📣 Feedback & Contact
 - Website CTA → Contact page: `https://cvcraft25.netlify.app/`
-- Or email: hello@cvcrafthq.com (update to your preferred address)
+- Or email: cvcraft25@gmail.com
 
 
 
