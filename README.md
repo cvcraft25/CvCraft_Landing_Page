@@ -103,25 +103,28 @@ We welcome feedback, ideas, and contributors to make CvCraft better for everyone
 - **Prateek Rane** – Chief Architect  
   LinkedIn: https://www.linkedin.com/in/prateek-rane-5a9496214/  
   GitHub: https://github.com/prateekrane
+
 - **Abhirup Dey** – Lead Backend Engineer  
   LinkedIn: https://www.linkedin.com/in/abhirup-dey-92287725b/  
   GitHub: https://github.com/abhi-ingithub22
+
 - **Prakhar Singh Panwar** – Deployment Lead  
   LinkedIn: https://www.linkedin.com/in/prakhar-singh-panwar-756116236/  
   GitHub: https://github.com/Prakhar22111
+
 - **Parv Kanungo** – User Analytics Lead  
   LinkedIn: https://www.linkedin.com/in/parvkanungo/  
   GitHub: https://github.com/ParvKanungo
+  
 - **Saraansh Gupta** – Front-End Engineer  
   LinkedIn: https://www.linkedin.com/in/saraanshgupta/  
   GitHub: https://github.com/Saraansh08
 
 ## 📣 Feedback & Contact
-- Website CTA → Contact page: `/CvCraft-Contact Us`
+- Website CTA → Contact page: `https://cvcraft25.netlify.app/`
 - Or email: hello@cvcrafthq.com (update to your preferred address)
 
-## 📄 License
-This project is licensed under the MIT License. See `LICENSE` (add if needed).
+
 
 ---
 
