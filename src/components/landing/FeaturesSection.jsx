@@ -1,25 +1,25 @@
 "use client";
 import { motion } from "motion/react";
-import { Bot, Shield, Zap } from "lucide-react";
+import { BrainCircuit, ShieldCheck, Gauge, ClipboardCheck } from "lucide-react";
 
 const features = [
   {
-    icon: Bot,
+    icon: BrainCircuit,
     title: "AI-Powered",
     description: "Smart AI understands your experience and crafts compelling narratives"
   },
   {
-    icon: Shield,
+    icon: ShieldCheck,
     title: "ATS-Friendly",
     description: "Optimized to pass Applicant Tracking Systems with 95% success rate"
   },
   {
-    icon: Zap,
+    icon: Gauge,
     title: "Lightning Fast",
     description: "Create professional resumes in under 5 minutes via simple chat"
   },
   {
-    icon: Shield,
+    icon: ClipboardCheck,
     title: "ATS Based Evaluation",
     description: "Built-in ATS evaluation to analyze your resume against job criteria and boost your match"
   }
@@ -55,7 +55,7 @@ export function FeaturesSection() {
             >
               <div className="h-full flex flex-col backdrop-blur-xl bg-white/20 dark:bg-black/20 rounded-2xl p-8 border border-white/30 dark:border-yellow-400/30 hover:border-white/50 dark:hover:border-yellow-400/50 transition-all duration-300 hover:shadow-2xl">
                 <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-8 h-8 text-black" />
+                  <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4" style={{ fontFamily: "Poppins, sans-serif" }}>
                   {feature.title}
