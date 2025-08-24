@@ -38,6 +38,7 @@ export function CtaSection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.open("https://t.me/SPA_89_bot", "_blank")}
               animate={{
                 boxShadow: [
                   "0 0 20px rgba(245, 158, 11, 0.4)",

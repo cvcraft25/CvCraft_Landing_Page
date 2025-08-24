@@ -5,7 +5,7 @@ import AbhirupImg from "../../assests/abhirup.jpg";
 import Saraansh from "../../assests/sarransh.jpg";
 import prakhar from "../../assests/prakhar.jpg";
 import prateek from "../../assests/prateek.jpg";
-import parv from "../../assests/parvKn.jpg";
+import parv from "../../assests/parvKn.JPG";
 const teamMembers = [
   {
     name: "Prateek Rane",

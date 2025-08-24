@@ -51,6 +51,7 @@ export function HeroSection() {
                 boxShadow: "0 20px 40px rgba(245, 158, 11, 0.4)",
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.open("https://t.me/SPA_89_bot", "_blank")}
               className="relative px-8 py-4 rounded-full bg-gradient-to-r from-yellow-500 to-orange-600 text-black font-semibold text-lg shadow-2xl overflow-hidden group"
               style={{ fontFamily: "Poppins, sans-serif" }}
             >
