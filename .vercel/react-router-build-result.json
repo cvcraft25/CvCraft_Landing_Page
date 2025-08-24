@@ -1,0 +1,123 @@
+{
+  "buildManifest": {
+    "serverBundles": {
+      "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
+        "id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+        "file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    },
+    "routeIdToServerBundleId": {
+      "page": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "CvCraft-Contact Us/page": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "__create/not-found": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "src/app/root.tsx",
+        "path": "",
+        "config": {}
+      },
+      "page": {
+        "id": "page",
+        "parentId": "root",
+        "file": "src/app/page.jsx",
+        "index": true,
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "CvCraft-Contact Us/page": {
+        "id": "CvCraft-Contact Us/page",
+        "parentId": "root",
+        "file": "src/app/CvCraft-Contact Us/page.jsx",
+        "path": "CvCraft-Contact Us",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "__create/not-found": {
+        "id": "__create/not-found",
+        "parentId": "root",
+        "file": "src/app/__create/not-found.tsx",
+        "path": "*?",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    }
+  },
+  "reactRouterConfig": {
+    "appDirectory": "D:/Projects/Telegram_Bot/createxyz-project/apps/web/src/app",
+    "basename": "/",
+    "buildDirectory": "D:/Projects/Telegram_Bot/createxyz-project/apps/web/build",
+    "future": {
+      "unstable_middleware": false,
+      "unstable_optimizeDeps": false,
+      "unstable_splitRouteModules": false,
+      "unstable_subResourceIntegrity": false,
+      "unstable_viteEnvironmentApi": false
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "root.tsx",
+        "path": ""
+      },
+      "page": {
+        "id": "page",
+        "parentId": "root",
+        "file": "./page.jsx",
+        "index": true
+      },
+      "CvCraft-Contact Us/page": {
+        "id": "CvCraft-Contact Us/page",
+        "parentId": "root",
+        "file": "./CvCraft-Contact Us/page.jsx",
+        "path": "CvCraft-Contact Us"
+      },
+      "__create/not-found": {
+        "id": "__create/not-found",
+        "parentId": "root",
+        "file": "./__create/not-found.tsx",
+        "path": "*?"
+      }
+    },
+    "routeDiscovery": {
+      "mode": "lazy",
+      "manifestPath": "/__manifest"
+    },
+    "serverBuildFile": "index.js",
+    "serverModuleFormat": "esm",
+    "ssr": true,
+    "unstable_routeConfig": [
+      {
+        "id": "root",
+        "path": "",
+        "file": "root.tsx",
+        "children": [
+          {
+            "file": "./page.jsx",
+            "index": true
+          },
+          {
+            "file": "./CvCraft-Contact Us/page.jsx",
+            "path": "CvCraft-Contact Us"
+          },
+          {
+            "file": "./__create/not-found.tsx",
+            "path": "*?"
+          }
+        ]
+      }
+    ]
+  },
+  "viteConfig": {
+    "build": {
+      "assetsDir": "assets"
+    }
+  }
+}

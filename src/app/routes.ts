@@ -2,20 +2,21 @@ import { readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-	type RouteConfigEntry,
-	index,
-	route,
+    type RouteConfigEntry,
+    type RouteConfig,
+    index,
+    route,
 } from '@react-router/dev/routes';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 type Tree = {
-	path: string;
-	children: Tree[];
-	hasPage: boolean;
-	isParam: boolean;
-	paramName: string;
-	isCatchAll: boolean;
+    path: string;
+    children: Tree[];
+    hasPage: boolean;
+    isParam: boolean;
+    paramName: string;
+    isCatchAll: boolean;
 };
 
 function buildRouteTree(dir: string, basePath = ''): Tree {
@@ -105,15 +106,15 @@ function generateRoutes(node: Tree): RouteConfigEntry[] {
 	return routes;
 }
 if (import.meta.env.DEV) {
-	import.meta.glob('./**/page.jsx', {});
+	import.meta.glob('./**/page.jsx', { eager: false });
 	if (import.meta.hot) {
-		import.meta.hot.accept((newSelf) => {
+		import.meta.hot.accept(() => {
 			import.meta.hot?.invalidate();
 		});
 	}
 }
 const tree = buildRouteTree(__dirname);
-const notFound = route('*?', './__create/not-found.tsx');
+const notFound = route('*', './__create/not-found.tsx');
 const routes = [...generateRoutes(tree), notFound];
 
-export default routes;
+export default routes satisfies RouteConfig;
