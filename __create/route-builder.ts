@@ -8,38 +8,59 @@ import updatedFetch from '../src/__create/fetch';
 const API_BASENAME = '/api';
 const api = new Hono();
 
-// Get current directory
-const __dirname = join(fileURLToPath(new URL('.', import.meta.url)), '../src/app/api');
+// Get current directory - handle both dev and production paths
+const currentDir = fileURLToPath(new URL('.', import.meta.url));
+let __dirname: string;
+
+if (process.env.NODE_ENV === 'production') {
+  // In production, we're in build/server/assets/, need to go back to project root
+  __dirname = join(currentDir, '../../../src/app/api');
+} else {
+  // In development, we're in __create/, need to go to src/app/api
+  __dirname = join(currentDir, '../src/app/api');
+}
 if (globalThis.fetch) {
   globalThis.fetch = updatedFetch;
 }
 
 // Recursively find all route.js files
 async function findRouteFiles(dir: string): Promise<string[]> {
-  const files = await readdir(dir);
-  let routes: string[] = [];
+  try {
+    const files = await readdir(dir);
+    let routes: string[] = [];
 
-  for (const file of files) {
-    try {
-      const filePath = join(dir, file);
-      const statResult = await stat(filePath);
+    for (const file of files) {
+      try {
+        const filePath = join(dir, file);
+        const normalizedPath = filePath.replace(/\\/g, '/');
 
-      if (statResult.isDirectory()) {
-        routes = routes.concat(await findRouteFiles(filePath));
-      } else if (file === 'route.js') {
-        // Handle root route.js specially
-        if (filePath === join(__dirname, 'route.js')) {
-          routes.unshift(filePath); // Add to beginning of array
-        } else {
-          routes.push(filePath);
+        // Skip any dev-only routes under an __create directory (e.g., ssr-test)
+        if (normalizedPath.includes('/__create/')) {
+          continue;
         }
-      }
-    } catch (error) {
-      console.error(`Error reading file ${file}:`, error);
-    }
-  }
 
-  return routes;
+        const statResult = await stat(filePath);
+
+        if (statResult.isDirectory()) {
+          routes = routes.concat(await findRouteFiles(filePath));
+        } else if (file === 'route.js') {
+          // Handle root route.js specially
+          if (filePath === join(__dirname, 'route.js')) {
+            routes.unshift(filePath); // Add to beginning of array
+          } else {
+            routes.push(filePath);
+          }
+        }
+      } catch (error) {
+        console.error(`Error reading file ${file}:`, error);
+      }
+    }
+
+    return routes;
+  } catch (error) {
+    console.error(`Error reading directory ${dir}:`, error);
+    return [];
+  }
 }
 
 // Helper function to transform file path to Hono route path
@@ -66,6 +87,14 @@ function getHonoPath(routeFile: string): { name: string; pattern: string }[] {
 
 // Import and register all routes
 async function registerRoutes() {
+  // Check if API directory exists first
+  try {
+    await stat(__dirname);
+  } catch (error) {
+    console.log('API directory not found, skipping route registration:', __dirname);
+    return;
+  }
+
   const routeFiles = (
     await findRouteFiles(__dirname).catch((error) => {
       console.error('Error finding route files:', error);
@@ -94,7 +123,7 @@ async function registerRoutes() {
             const honoPath = `/${parts.map(({ pattern }) => pattern).join('/')}`;
             const handler: Handler = async (c) => {
               const params = c.req.param();
-              if (import.meta.env.DEV) {
+              if (process.env.NODE_ENV === 'development') {
                 const updatedImportUrl = `${pathToFileURL(routeFile).href}?update=${Date.now()}`;
                 const updatedRoute = await import(/* @vite-ignore */ updatedImportUrl);
                 return await updatedRoute[method](c.req.raw, { params });
@@ -137,12 +166,16 @@ async function registerRoutes() {
 await registerRoutes();
 
 // Hot reload routes in development
-if (import.meta.env.DEV) {
-  import.meta.glob('../src/app/api/**/route.js', {
-    eager: true,
-  });
-  if (import.meta.hot) {
-    import.meta.hot.accept((newSelf) => {
+if (process.env.NODE_ENV === 'development') {
+  // Hot module replacement for development
+  const viteImportMeta = import.meta as any;
+  if (viteImportMeta.glob) {
+    viteImportMeta.glob('../src/app/api/**/route.js', {
+      eager: true,
+    });
+  }
+  if (viteImportMeta.hot) {
+    viteImportMeta.hot.accept((newSelf: any) => {
       registerRoutes().catch((err) => {
         console.error('Error reloading routes:', err);
       });
