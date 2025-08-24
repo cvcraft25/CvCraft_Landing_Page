@@ -43,7 +43,7 @@
         "id": "__create/not-found",
         "parentId": "root",
         "file": "src/app/__create/not-found.tsx",
-        "path": "*?",
+        "path": "/*",
         "config": {
           "runtime": "nodejs"
         }
@@ -83,7 +83,7 @@
         "id": "__create/not-found",
         "parentId": "root",
         "file": "./__create/not-found.tsx",
-        "path": "*?"
+        "path": "/*"
       }
     },
     "routeDiscovery": {
@@ -109,7 +109,7 @@
           },
           {
             "file": "./__create/not-found.tsx",
-            "path": "*?"
+            "path": "/*"
           }
         ]
       }
