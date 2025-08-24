@@ -18,6 +18,7 @@ export default defineConfig({
   envPrefix: 'NEXT_PUBLIC_',
   build: {
     target: 'es2022',
+    sourcemap: false,
   },
   optimizeDeps: {
     // Explicitly include fast-glob, since it gets dynamically imported and we
